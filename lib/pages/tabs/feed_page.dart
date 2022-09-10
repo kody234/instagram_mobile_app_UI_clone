@@ -20,17 +20,24 @@ class FeedPage extends StatelessWidget {
       appBar: AppBar(
         leading: Padding(
           padding: EdgeInsets.all(17.sp),
-          child: const ImageIcon(
-            AssetImage(cameraIcon),
+          child: InkWell(
+            onTap: () {
+              Provider.of<ThemeState>(context, listen: false).changeTheme();
+            },
+            child: const ImageIcon(
+              AssetImage(cameraIcon),
+            ),
           ),
         ),
-        title: Image.asset(
-          Provider.of<ThemeState>(context, listen: false).appTheme ==
-                  ThemeMode.light
-              ? instagramLight
-              : instagramDark,
-          height: 29.h,
-          width: 105.w,
+        title: Consumer<ThemeState>(
+          builder: (context, themeState, child) => Image.asset(
+            Provider.of<ThemeState>(context, listen: false).appTheme ==
+                    ThemeMode.light
+                ? instagramLight
+                : instagramDark,
+            height: 29.h,
+            width: 105.w,
+          ),
         ),
         actions: [
           ImageIcon(

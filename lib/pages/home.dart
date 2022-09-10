@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/pages/tabs/explore_screen.dart';
 import 'package:instagram_clone/pages/tabs/feed_page.dart';
 
 import '../widgets/custom_bottom_nav.dart';
@@ -16,9 +17,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     List<Widget> pages = [
       const FeedPage(),
-      Center(
-        child: Text('second page'),
-      ),
+      const ExploreScreen(),
       Center(
         child: Text('third page'),
       ),
