@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:instagram_clone/auth/login_screen.dart';
 import 'package:instagram_clone/auth/sign_up_screen.dart';
 import 'package:instagram_clone/pages/home.dart';
+import 'package:instagram_clone/pages/tabs/explore_screen.dart';
 import 'package:instagram_clone/services/providers/theme_state.dart';
 import 'package:instagram_clone/utils/theme.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
             theme: AppTheme().light(),
             darkTheme: AppTheme().dark(),
             themeMode: themeState.appTheme,
-            home: const HomePage(),
+            home: const LoginScreen(),
           ),
         ),
       ),

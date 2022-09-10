@@ -3,7 +3,9 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:instagram_clone/widgets/post_header_widget.dart';
+import 'package:provider/provider.dart';
 
+import '../services/providers/theme_state.dart';
 import 'custom_image_slider.dart';
 
 class PostWidget extends StatelessWidget {
@@ -32,6 +34,11 @@ class PostWidget extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 13.r,
+                backgroundColor:
+                    Provider.of<ThemeState>(context, listen: false).appTheme ==
+                            ThemeMode.light
+                        ? Colors.black
+                        : Colors.white,
               ),
               SizedBox(
                 width: 6.w,

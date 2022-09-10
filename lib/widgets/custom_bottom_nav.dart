@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
+import '../services/providers/theme_state.dart';
 import '../utils/images.dart';
 
 class CustomBottomNav extends StatelessWidget {
@@ -15,6 +17,16 @@ class CustomBottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      selectedIconTheme: IconThemeData(
+          color: Provider.of<ThemeState>(context, listen: false).appTheme ==
+                  ThemeMode.light
+              ? Colors.black
+              : Colors.white),
+      unselectedIconTheme: IconThemeData(
+          color: Provider.of<ThemeState>(context, listen: false).appTheme ==
+                  ThemeMode.light
+              ? Colors.black
+              : Colors.white),
       onTap: onTap,
       backgroundColor: Colors.red,
       selectedLabelStyle:
@@ -25,9 +37,9 @@ class CustomBottomNav extends StatelessWidget {
       currentIndex: navIndex,
       items: [
         BottomNavigationBarItem(
+          backgroundColor: Theme.of(context).bottomAppBarColor,
           icon: ImageIcon(
             const AssetImage(homeIcon),
-            color: Colors.black,
             size: 20.sp,
           ),
           label: 'home',
@@ -37,21 +49,18 @@ class CustomBottomNav extends StatelessWidget {
               const AssetImage(
                 searchIcon,
               ),
-              color: Colors.black,
               size: 20.sp,
             ),
             label: ''),
         BottomNavigationBarItem(
             icon: ImageIcon(
               const AssetImage(postIcon),
-              color: Colors.black,
               size: 20.sp,
             ),
             label: ''),
         BottomNavigationBarItem(
             icon: ImageIcon(
               const AssetImage(favouriteIcon),
-              color: Colors.black,
               size: 20.sp,
             ),
             label: ''),

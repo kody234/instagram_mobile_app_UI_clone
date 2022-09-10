@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:instagram_clone/auth/sign_up_screen.dart';
+import 'package:instagram_clone/pages/home.dart';
 import 'package:instagram_clone/services/providers/theme_state.dart';
 import 'package:instagram_clone/utils/colors.dart';
 
@@ -70,8 +71,8 @@ class LoginScreen extends StatelessWidget {
                 width: double.infinity,
                 child: CustomElevatedButton(
                   onTap: () {
-                    Provider.of<ThemeState>(context, listen: false)
-                        .changeTheme();
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const HomePage()));
                   },
                   hintText: 'Log in',
                 ),

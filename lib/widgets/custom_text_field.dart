@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../services/providers/theme_state.dart';
 import '../utils/colors.dart';
+import '../utils/images.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -11,10 +12,12 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     this.obscure,
     this.validator,
+    this.icon,
   }) : super(key: key);
   final String hintText;
   final bool? obscure;
   final String? Function(String?)? validator;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +25,18 @@ class CustomTextField extends StatelessWidget {
       validator: validator,
       obscureText: obscure ?? false,
       decoration: InputDecoration(
+        prefixIcon: Icon(
+          icon,
+          color: Provider.of<ThemeState>(context, listen: false).appTheme ==
+                  ThemeMode.light
+              ? const Color(0xff3C3C43).withOpacity(0.6)
+              : const Color(0xff8E8E93),
+          size: 25.sp,
+        ),
+        isDense: true,
         hintText: hintText,
-        hintStyle: Theme.of(context).textTheme.bodySmall,
+        hintStyle:
+            Theme.of(context).textTheme.bodySmall?.copyWith(fontSize: 18.sp),
         filled: true,
         fillColor: Provider.of<ThemeState>(context, listen: false).appTheme ==
                 ThemeMode.light

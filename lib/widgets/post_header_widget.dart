@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:instagram_clone/utils/images.dart';
+import 'package:provider/provider.dart';
+
+import '../services/providers/theme_state.dart';
 
 class PostHeader extends StatelessWidget {
   const PostHeader({
@@ -18,6 +21,11 @@ class PostHeader extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 23.r,
+            backgroundColor:
+                Provider.of<ThemeState>(context, listen: false).appTheme ==
+                        ThemeMode.light
+                    ? Colors.black
+                    : Colors.white,
           ),
           SizedBox(
             width: 10.w,
@@ -34,8 +42,8 @@ class PostHeader extends StatelessWidget {
                   'Location',
                   style: Theme.of(context)
                       .textTheme
-                      .headlineSmall
-                      ?.copyWith(fontSize: 16.sp),
+                      .titleSmall
+                      ?.copyWith(fontSize: 16.sp, fontWeight: FontWeight.w400),
                 ),
               ],
             ),
